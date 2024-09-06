@@ -126,4 +126,4 @@ st.dataframe(df_pred_proba,
 
 
 penguin_species = np.array(['Adelie', 'Chinstrap', 'Gentoo'])
-st.success(str(penguin_species[y_pred]))
+st.success(str(penguin_species[y_pred][0]))
