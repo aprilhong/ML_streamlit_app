@@ -95,4 +95,9 @@ df_pred_proba.columns =['Adelie','Chinstrap','Gentoo']
 df_pred_proba.rename(columns={0: 'Adelie',
                               1: 'Chinstrap',
                               2: 'Gentoo'})
-df_pred_proba
+# df_pred_proba
+
+# Display predicted species
+st.subheader('Predicted Species')
+penguin_species = np.array(['Adelie', 'Chinstrap', 'Gentoo'])
+st.success(str(penguin_species[y_pred]))
