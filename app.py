@@ -88,4 +88,11 @@ model.fit(X, y)
 
 #Apply model to make predictions
 y_pred = model.predict(input_row)
+
 y_pred_proba = model.predict_proba(input_row)
+df_pred_proba = pd.DataFrame(y_pred_proba)
+df_pred_proba.columns =['Adelie','Chinstrap','Gentoo']
+df_pred_proba.rename(columns={0: 'Adelie',
+                              1: 'Chinstrap',
+                              2: 'Gentoo'})
+df_pred_proba
