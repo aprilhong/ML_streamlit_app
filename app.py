@@ -45,7 +45,7 @@ with st.sidebar:
         }
 
   df_input = pd.DataFrame(data, index=[0])
-  input_penguins = pd.concat([df_input,X], axis=0)
+  input_penguins = pd.concat([df_input,X_raw], axis=0)
 
 # Encode X categorical features
 encoded = ['island', 'sex']
