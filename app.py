@@ -58,6 +58,7 @@ with st.expander('Input Features'):
 # Encode X categorical features
 encoded = ['island', 'sex']
 df_penguins=pd.get_dummies(input_penguins,prefix=encoded)
+X=df_penguins[1:]
 input_row = df_penguins[:1] #show first row only
 
 # Encode y
@@ -78,3 +79,13 @@ with st.expander('Data Preparation'):
   st.write('**Encoded y**')
   y
 
+# Model Training
+
+# Train ML model
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier()
+model.fit(X, y)
+
+#Apply model to make predictions
+y_pred = model.predict(input_row)
+y_pred_proba = model.predict_proba(input_row)
