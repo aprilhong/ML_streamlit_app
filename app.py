@@ -99,6 +99,31 @@ df_pred_proba.rename(columns={0: 'Adelie',
 
 # Display predicted species
 st.subheader('Predicted Species')
-df_pred_proba
+st.dataframe(df_pred_proba, 
+             columns_config={
+               'Adelie': st.column_config.ProgressColumn(
+                  'Adelie',
+                  format='%f',
+                  width='medium',
+                  min_value=0,
+                  max_value=1
+                  ),
+               'Chinstrap': st.column_config.ProgressColumn(
+                  'Chinstrap',
+                  format='%f',
+                  width='medium',
+                  min_value=0,
+                  max_value=1
+                  ),
+               'Gentoo': st.column_config.ProgressColumn(
+                  'Gentoo',
+                  format='%f',
+                  width='medium',
+                  min_value=0,
+                  max_value=1
+                  )
+                  }, hide_index=True)
+
+
 penguin_species = np.array(['Adelie', 'Chinstrap', 'Gentoo'])
 st.success(str(penguin_species[y_pred]))
