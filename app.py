@@ -12,12 +12,12 @@ with st.expander('Data'):
   df
 
   st.write('**X**')
-  X = df.drop('species',axis=1)
-  X
+  X_raw = df.drop('species',axis=1)
+  X_raw
 
   st.write('**y**')
-  y = df.species
-  y
+  y_raw = df.species
+  y_raw
 
 
 with st.expander('Data Visualization'):
@@ -47,10 +47,21 @@ with st.sidebar:
   df_input = pd.DataFrame(data, index=[0])
   input_penguins = pd.concat([df_input,X], axis=0)
 
-  # Encode categorical features
-  encoded = ['island', 'sex']
-  df_penguins=pd.get_dummies(input_penguins,prefix=encoded)
-  input_row = df_penguins[:1] #show first row only
+# Encode X categorical features
+encoded = ['island', 'sex']
+df_penguins=pd.get_dummies(input_penguins,prefix=encoded)
+input_row = df_penguins[:1] #show first row only
+
+# Encode y
+target_mapper = {'Adelie': 0,
+                 'Chinstrap': 1,
+                 'Gentoo': 2            
+                 }
+
+def target_encode(val):
+  return target_mapper[val]
+
+
 
 with st.expander('Input Features'):
   st.write('**Input penguin**')
@@ -59,4 +70,4 @@ with st.expander('Input Features'):
   input_penguins
   st.write('**Encoded Input Penguin**')
   input_row
-  
+
